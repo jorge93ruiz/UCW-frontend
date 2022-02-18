@@ -66,8 +66,9 @@
   .yourstory-popup .pp-content {
     padding: 20px 15px;
   }
-  .footer .contact-info {
-    flex: 0 0 60%;
+  .footer .contact-info,
+  .footer .quick-links {
+    flex: 0 0 80%;
   }
 }
 @media (max-width: 574px) {

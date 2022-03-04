@@ -175,31 +175,51 @@ window.addEventListener('load', (event) => {
 /*----------------events carousel----------------*/
 (() => {
 
-  // set item with depending on screen
-  let itemWidth = 570;
-  let itemsOnScreen = 2;
-  if (window.matchMedia("(max-width: 769px)").matches) {
-    itemWidth = 300;
-    itemsOnScreen = 1;
+  // get carousel section
+  let carousel = document.querySelector(".events-carousel.carousel");
+
+  // visible area
+  let visibleArea;
+  if (!window.matchMedia("(max-width: 1140px)").matches) {
+    visibleArea = 1140;
+  } else {
+    visibleArea = window.innerWidth;
   }
-  else if (window.matchMedia("(max-width: 1140px)").matches) {
-    itemWidth = 700;
+
+  // item width and amount of items on screen
+  let itemWidth,
+  itemsOnScreen;
+  if (!window.matchMedia("(max-width: 1140px)").matches) {
+    itemWidth = 550;
+    itemsOnScreen = 2;
+  } else {
+    itemWidth = Math.floor(visibleArea * 0.9);
     itemsOnScreen = 1;
   }
 
-  let prevBtn = document.querySelector("span.prev"),
-  nextBtn = document.querySelector("span.next"),
-  carouselItems = document.querySelectorAll(".carousel-item"),
-  carouselContainer = document.querySelector(".events-carousel-inner"),
-  carouselVisibleArea = document.querySelector(".carousel-visible-area"),
-  carouselPage = Math.ceil(carouselItems.length / itemsOnScreen),
+  // get carousel items adn set width
+  let carouselItems = carousel.querySelectorAll(".carousel-item");
+  carouselItems.forEach((item) => {
+    item.style.width = itemWidth + "px";
+  });
+
+  // get and set carousel visible area
+  let carouselVisibleArea = carousel.querySelector(".carousel-visible-area");
+  carouselVisibleArea.style.width = (itemWidth * itemsOnScreen) + "px";
+
+  // get and set carousel container width
+  let carouselContainer = carousel.querySelector(".carousel-items");
+  carouselContainer.style.width = (itemWidth * carouselItems.length) + "px";
+
+  // get prev and next buttons
+  let prevBtn = carousel.querySelector("span.prev"),
+  nextBtn = carousel.querySelector("span.next");
+
+  // set variables
+  let carouselPage = Math.ceil(carouselItems.length / itemsOnScreen),
   l = 0,
   moveWidth = itemWidth,
   maxMove = itemWidth * (carouselItems.length - itemsOnScreen);
-
-  // set carouselContainer width
-  carouselContainer.style.width = (itemWidth * carouselItems.length) + 'px';
-  carouselVisibleArea.style.width = (itemWidth * itemsOnScreen) + 'px';
 
   let leftMover = () => {
     l = l - moveWidth;
@@ -265,11 +285,13 @@ window.addEventListener('load', (event) => {
 
   // $('body').on('click', '.founder-items', (event) => {
   document.addEventListener("click", (event) => {
-    if (event.target.closest(".founder-item-inner")) {
-      // get founder-item
-      const founderItem = event.target.closest(".founder-item-inner").parentElement;
-      popupDetails(founderItem);
-      popUpTogle();
+    if (event.target.classList.contains("pp-btn")) {
+      if (event.target.closest(".founder-item-inner")) {
+        // get founder-item
+        const founderItem = event.target.closest(".founder-item-inner").parentElement;
+        popupDetails(founderItem);
+        popUpTogle();
+      }
     }
   });
 
@@ -305,11 +327,13 @@ window.addEventListener('load', (event) => {
 
   // $('body').on('click', '.story-items', (event) => {
   document.addEventListener("click", (event) => {
-    if (event.target.closest(".story-item-inner")) {
-      // get story-item
-      const storyItem = event.target.closest(".story-item-inner").parentElement;
-      popupDetails(storyItem);
-      popUpTogle();
+    if(event.target.classList.contains("pp-btn")) {
+      if (event.target.closest(".story-item-inner")) {
+        // get story-item
+        const storyItem = event.target.closest(".story-item-inner").parentElement;
+        popupDetails(storyItem);
+        popUpTogle();
+      }
     }
   });
 
@@ -336,3 +360,16 @@ window.addEventListener('load', (event) => {
   }
 
 })();
+
+// EXAMPLE OF SHOW ELEMENT WHEN SCROLLING DOWN
+// (() => {
+//   const item = document.querySelector(".news-banner-bg");
+
+//   window.onscroll = () => {
+//     if (document.documentElement.scrollTop > item.getBoundingClientRect().top + 50) {
+//       item.classList.add("visible");
+//     } else {
+//       item.classList.remove("visible");
+//     }
+//   }
+// })();

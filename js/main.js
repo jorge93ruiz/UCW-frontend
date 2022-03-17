@@ -4,14 +4,14 @@ function bodyScrollingToggle() {
 }
 
 // hide all sections except active
-(() => {
-  const sections = document.querySelectorAll(".section");
-  sections.forEach((section) => {
-    if (!section.classList.contains("active")) {
-      section.classList.add("hide");
-    }
-  });
-})();
+// (() => {
+//   const sections = document.querySelectorAll(".section");
+//   sections.forEach((section) => {
+//     if (!section.classList.contains("active")) {
+//       section.classList.add("hide");
+//     }
+//   });
+// })();
 
 /*----------------preloader effect----------------*/
 window.addEventListener('load', (event) => {
@@ -132,233 +132,235 @@ window.addEventListener('load', (event) => {
 
 /*----------------news popup----------------*/
 (() => {
-  const popup = document.querySelector(".news-popup"),
-  closeBtn = popup.querySelector(".close-pp");
-
-  // $('body').on('click', '.news-items', (event) => {  
-  document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("pp-btn")) {
-      if (event.target.closest(".news-item-inner")) {
-        // get news-item
-        const newsItem = event.target.closest(".news-item-inner").parentElement;
-        popupDetails(newsItem);
-        popUpTogle();
+  if (window.location.href.includes("/news")) {
+    const popup = document.querySelector(".news-popup"),
+    closeBtn = popup.querySelector(".close-pp");
+  
+    // $('body').on('click', '.news-items', (event) => {  
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("pp-btn")) {
+        if (event.target.closest(".news-item-inner")) {
+          // get news-item
+          const newsItem = event.target.closest(".news-item-inner").parentElement;
+          popupDetails(newsItem);
+          popUpTogle();
+        }
       }
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      popUpTogle();
+    });
+  
+    function popUpTogle() {
+      popup.classList.toggle("open");
+      bodyScrollingToggle();
     }
-  });
-
-  closeBtn.addEventListener("click", () => {
-    popUpTogle();
-  });
-
-  function popUpTogle() {
-    popup.classList.toggle("open");
-    bodyScrollingToggle();
-  }
-
-  function popupDetails(newsItem) {
-    // get news-item title / content
-    const title = newsItem.querySelector(".news-item-title").innerHTML;
-    var content = "";
-    if (newsItem.querySelector(".news-item-content")) {
-      content = newsItem.querySelector(".news-item-content").innerHTML;
+  
+    function popupDetails(newsItem) {
+      // get news-item title / content
+      const title = newsItem.querySelector(".news-item-title").innerHTML;
+      var content = "";
+      if (newsItem.querySelector(".news-item-content")) {
+        content = newsItem.querySelector(".news-item-content").innerHTML;
+      }
+      else if (newsItem.querySelector(".news-item-media")) {
+        content = newsItem.querySelector(".news-item-media").innerHTML;
+      }
+      // set news-item title / content into popup
+      popup.querySelector(".pp-title").innerHTML = title;
+      popup.querySelector(".pp-content").innerHTML = content;
     }
-    else if (newsItem.querySelector(".news-item-media")) {
-      content = newsItem.querySelector(".news-item-media").innerHTML;
-    }
-    // set news-item title / content into popup
-    popup.querySelector(".pp-title").innerHTML = title;
-    popup.querySelector(".pp-content").innerHTML = content;
   }
 })();
 
 /*----------------events carousel----------------*/
 (() => {
-
-  // get carousel section
-  let carousel = document.querySelector(".events-carousel.carousel");
-
-  // visible area
-  let visibleArea;
-  if (!window.matchMedia("(max-width: 1140px)").matches) {
-    visibleArea = 1140;
-  } else {
-    visibleArea = window.innerWidth;
-  }
-
-  // item width and amount of items on screen
-  let itemWidth,
-  itemsOnScreen;
-  if (!window.matchMedia("(max-width: 1140px)").matches) {
-    itemWidth = 550;
-    itemsOnScreen = 2;
-  } else {
-    itemWidth = Math.floor(visibleArea * 0.9);
-    itemsOnScreen = 1;
-  }
-
-  // get carousel items adn set width
-  let carouselItems = carousel.querySelectorAll(".carousel-item");
-  carouselItems.forEach((item) => {
-    item.style.width = itemWidth + "px";
-  });
-
-  // get and set carousel visible area
-  let carouselVisibleArea = carousel.querySelector(".carousel-visible-area");
-  carouselVisibleArea.style.width = (itemWidth * itemsOnScreen) + "px";
-
-  // get and set carousel container width
-  let carouselContainer = carousel.querySelector(".carousel-items");
-  carouselContainer.style.width = (itemWidth * carouselItems.length) + "px";
-
-  // get prev and next buttons
-  let prevBtn = carousel.querySelector("span.prev"),
-  nextBtn = carousel.querySelector("span.next");
-
-  // set variables
-  let carouselPage = Math.ceil(carouselItems.length / itemsOnScreen),
-  l = 0,
-  moveWidth = itemWidth,
-  maxMove = itemWidth * (carouselItems.length - itemsOnScreen);
-
-  let leftMover = () => {
-    l = l - moveWidth;
-    if (l < 0) {
-      l = maxMove;
+  if (window.location.href.includes("/events")) {
+    // get carousel section
+    let carousel = document.querySelector(".events-carousel.carousel");
+  
+    // visible area
+    let visibleArea;
+    if (!window.matchMedia("(max-width: 1140px)").matches) {
+      visibleArea = 1140;
+    } else {
+      visibleArea = window.innerWidth;
     }
-    for (const i of carouselItems) {
-      if (carouselPage > 1) {
+  
+    // item width and amount of items on screen
+    let itemWidth,
+    itemsOnScreen;
+    if (!window.matchMedia("(max-width: 1140px)").matches) {
+      itemWidth = 550;
+      itemsOnScreen = 2;
+    } else {
+      itemWidth = Math.floor(visibleArea * 0.9);
+      itemsOnScreen = 1;
+    }
+  
+    // get carousel items adn set width
+    let carouselItems = carousel.querySelectorAll(".carousel-item");
+    carouselItems.forEach((item) => {
+      item.style.width = itemWidth + "px";
+    });
+  
+    // get and set carousel visible area
+    let carouselVisibleArea = carousel.querySelector(".carousel-visible-area");
+    carouselVisibleArea.style.width = (itemWidth * itemsOnScreen) + "px";
+  
+    // get and set carousel container width
+    let carouselContainer = carousel.querySelector(".carousel-items");
+    carouselContainer.style.width = (itemWidth * carouselItems.length) + "px";
+  
+    // get prev and next buttons
+    let prevBtn = carousel.querySelector("span.prev"),
+    nextBtn = carousel.querySelector("span.next");
+  
+    // set variables
+    let carouselPage = Math.ceil(carouselItems.length / itemsOnScreen),
+    l = 0,
+    moveWidth = itemWidth,
+    maxMove = itemWidth * (carouselItems.length - itemsOnScreen);
+  
+    let leftMover = () => {
+      l = l - moveWidth;
+      if (l < 0) {
+        l = maxMove;
+      }
+      for (const i of carouselItems) {
+        if (carouselPage > 1) {
+          i.style.left = '-' + l + 'px';
+        }
+      }
+    }
+  
+    let rightMover = () => {
+      l = l + moveWidth;
+      if (carouselItems.length == itemsOnScreen) {
+        l = 0;
+        return;
+      }
+      for (const i of carouselItems) {
+        if (l > maxMove) {
+          l = 0;
+        }
         i.style.left = '-' + l + 'px';
       }
     }
+  
+    prevBtn.addEventListener("click", leftMover);
+    nextBtn.addEventListener("click", rightMover);
   }
-
-  let rightMover = () => {
-    l = l + moveWidth;
-    if (carouselItems.length == itemsOnScreen) {
-      l = 0;
-      return;
-    }
-    for (const i of carouselItems) {
-      if (l > maxMove) {
-        l = 0;
-      }
-      i.style.left = '-' + l + 'px';
-    }
-  }
-
-  prevBtn.addEventListener("click", leftMover);
-  nextBtn.addEventListener("click", rightMover);
-
 })();
 
 /*----------------our story tabs----------------*/
 (() => {
-
-  const ourstorySection = document.querySelector(".ourstory-section"),
-  tabsContainer = document.querySelector(".ourstory-tabs");
-
-  tabsContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("tab-item") && 
-    !event.target.classList.contains("active")) {
-      const target = event.target.getAttribute("data-target");
-      // deactivate existing active tab-item
-      tabsContainer.querySelector(".active").classList.add("outer-shadow", "hover-in-shadow");
-      tabsContainer.querySelector(".active").classList.remove("active");
-      // activate new tab-item
-      event.target.classList.remove("outer-shadow", "hover-in-shadow");
-      event.target.classList.add("active");
-      // deactivate existing active tab-content
-      ourstorySection.querySelector(".tab-content.active").classList.remove("active");
-      // activate new tab-content
-      ourstorySection.querySelector(target).classList.add("active");
-    }
-  });
-
+  if (window.location.href.includes("/our-story")) {
+    const ourstorySection = document.querySelector(".ourstory-section"),
+    tabsContainer = document.querySelector(".ourstory-tabs");
+  
+    tabsContainer.addEventListener("click", (event) => {
+      if (event.target.classList.contains("tab-item") && 
+      !event.target.classList.contains("active")) {
+        const target = event.target.getAttribute("data-target");
+        // deactivate existing active tab-item
+        tabsContainer.querySelector(".active").classList.add("outer-shadow", "hover-in-shadow");
+        tabsContainer.querySelector(".active").classList.remove("active");
+        // activate new tab-item
+        event.target.classList.remove("outer-shadow", "hover-in-shadow");
+        event.target.classList.add("active");
+        // deactivate existing active tab-content
+        ourstorySection.querySelector(".tab-content.active").classList.remove("active");
+        // activate new tab-content
+        ourstorySection.querySelector(target).classList.add("active");
+      }
+    });
+  }
 })();
 
 /*----------------our story popup----------------*/
 (() => {
-
-  const popup = document.querySelector(".ourstory-popup"),
-  closeBtn = popup.querySelector(".close-pp");
-
-  // $('body').on('click', '.founder-items', (event) => {
-  document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("pp-btn")) {
-      if (event.target.closest(".founder-item-inner")) {
-        // get founder-item
-        const founderItem = event.target.closest(".founder-item-inner").parentElement;
-        popupDetails(founderItem);
-        popUpTogle();
+  if (window.location.href.includes("/our-story")) {
+    const popup = document.querySelector(".ourstory-popup"),
+    closeBtn = popup.querySelector(".close-pp");
+  
+    // $('body').on('click', '.founder-items', (event) => {
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("pp-btn")) {
+        if (event.target.closest(".founder-item-inner")) {
+          // get founder-item
+          const founderItem = event.target.closest(".founder-item-inner").parentElement;
+          popupDetails(founderItem);
+          popUpTogle();
+        }
       }
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      popUpTogle();
+    });
+  
+    function popUpTogle() {
+      popup.classList.toggle("open");
+      bodyScrollingToggle();
     }
-  });
-
-  closeBtn.addEventListener("click", () => {
-    popUpTogle();
-  });
-
-  function popUpTogle() {
-    popup.classList.toggle("open");
-    bodyScrollingToggle();
+  
+    function popupDetails(founderItem) {
+      // get image from founder-item
+      const img = founderItem.querySelector(".founder-item-img img").getAttribute("src");
+      // set img into popup
+      popup.querySelector(".pp-img img").src = img;
+      // get content and name from founder-item
+      const name = founderItem.querySelector(".founder-item-title").innerHTML,
+      story = founderItem.querySelector(".founder-item-content").innerHTML;
+      // set story and name into popup
+      popup.querySelector(".pp-title").innerHTML = name;
+      popup.querySelector(".pp-content").innerHTML = story;
+    }
   }
-
-  function popupDetails(founderItem) {
-    // get image from founder-item
-    const img = founderItem.querySelector(".founder-item-img img").getAttribute("src");
-    // set img into popup
-    popup.querySelector(".pp-img img").src = img;
-    // get content and name from founder-item
-    const name = founderItem.querySelector(".founder-item-title").innerHTML,
-    story = founderItem.querySelector(".founder-item-content").innerHTML;
-    // set story and name into popup
-    popup.querySelector(".pp-title").innerHTML = name;
-    popup.querySelector(".pp-content").innerHTML = story;
-  }
-
 })();
 
 /*----------------your story popup----------------*/
 (() => {
-
-  const popup = document.querySelector(".yourstory-popup"),
-  closeBtn = popup.querySelector(".close-pp");
-
-  // $('body').on('click', '.story-items', (event) => {
-  document.addEventListener("click", (event) => {
-    if(event.target.classList.contains("pp-btn")) {
-      if (event.target.closest(".story-item-inner")) {
-        // get story-item
-        const storyItem = event.target.closest(".story-item-inner").parentElement;
-        popupDetails(storyItem);
-        popUpTogle();
+  if (window.location.href.includes("/your-story")) {
+    const popup = document.querySelector(".yourstory-popup"),
+    closeBtn = popup.querySelector(".close-pp");
+  
+    // $('body').on('click', '.story-items', (event) => {
+    document.addEventListener("click", (event) => {
+      if(event.target.classList.contains("pp-btn")) {
+        if (event.target.closest(".story-item-inner")) {
+          // get story-item
+          const storyItem = event.target.closest(".story-item-inner").parentElement;
+          popupDetails(storyItem);
+          popUpTogle();
+        }
       }
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      popUpTogle();
+    });
+  
+    function popUpTogle() {
+      popup.classList.toggle("open");
+      bodyScrollingToggle();
     }
-  });
-
-  closeBtn.addEventListener("click", () => {
-    popUpTogle();
-  });
-
-  function popUpTogle() {
-    popup.classList.toggle("open");
-    bodyScrollingToggle();
+  
+    function popupDetails(storyItem) {
+      // get image from story-item
+      const img = storyItem.querySelector(".story-item-img img").getAttribute("src");
+      // set img into popup
+      popup.querySelector(".pp-img img").src = img;
+      // get story and name from story-item
+      const name = storyItem.querySelector(".story-item-title").innerHTML,
+      story = storyItem.querySelector(".story-item-content").innerHTML;
+      // set story and name into popup
+      popup.querySelector(".pp-title").innerHTML = name;
+      popup.querySelector(".pp-content").innerHTML = story;
+    }
   }
-
-  function popupDetails(storyItem) {
-    // get image from story-item
-    const img = storyItem.querySelector(".story-item-img img").getAttribute("src");
-    // set img into popup
-    popup.querySelector(".pp-img img").src = img;
-    // get story and name from story-item
-    const name = storyItem.querySelector(".story-item-title").innerHTML,
-    story = storyItem.querySelector(".story-item-content").innerHTML;
-    // set story and name into popup
-    popup.querySelector(".pp-title").innerHTML = name;
-    popup.querySelector(".pp-content").innerHTML = story;
-  }
-
 })();
 
 // EXAMPLE OF SHOW ELEMENT WHEN SCROLLING DOWN

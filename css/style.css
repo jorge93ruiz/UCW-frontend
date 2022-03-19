@@ -212,6 +212,7 @@ predefined classes
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  height: 39px;
   font-size: var(--text-small);
   font-weight: 500;
   opacity: 0.7;
@@ -253,13 +254,15 @@ predefined classes
   position: relative;
   height: 0;
 }
-.iframe-container iframe {
+.iframe-container iframe,
+.iframe-container video {
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   position: absolute;
 }
+
 .empty-field {
   padding: 40px;
   font-size: var(--text-medium);
@@ -824,6 +827,9 @@ home section
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
 }
 .home-section .forms-inner {
   display: flex;
@@ -1524,7 +1530,7 @@ popups
   width: 100%;
   max-width: 1000px;
   max-height: 95vh;
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 3px;
   margin: auto;
   overflow: auto;
@@ -1544,13 +1550,13 @@ popups
   color: var(--ucw-pink);
 }
 .pp-img {
-  margin: auto;
-  max-width: 200px;
-  max-height: 200px;
+  margin: auto auto 10px;
+  /* max-width: 200px; */
+  max-height: 300px;
   border-radius: 3px;
 }
 .pp-img img {
-  max-height: 200px;
+  max-height: 300px;
 }
 .pp .pp-title {
   font-size: var(--text-large);
@@ -1571,8 +1577,10 @@ popups
 }
 .pp .pp-content {
   padding: 0 20px 20px;
-  white-space: pre-line;
   text-align: justify;
+}
+.pp .pp-content p {
+  white-space: pre-line;
 }
 .pp .create-btn-container,
 .pp .update-btn-container {

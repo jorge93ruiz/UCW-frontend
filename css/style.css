@@ -56,9 +56,6 @@ body {
 body.hidden-scrolling {
   overflow-y: hidden;
 }
-.hidden-element {
-  visibility: hidden;
-}
 *:not(i) {
   /* font-family: 'Rubik', sans-serif; */
   font-family: 'Montserrat', sans-serif;
@@ -722,6 +719,7 @@ home section
   align-items: center;
   justify-content: center;
   padding: 20px;
+  position: relative;
 }
 .home-section .news-banner .news-banner-inner .news-banner-items .item label {
   font-weight: 400;
@@ -817,7 +815,7 @@ home section
   width: 100%;
 }
 .w-100 {
-  padding: 0 10px;
+  /* padding: 0 10px; */
   flex: 0 0 100%;
   max-width: 100%;
 }

@@ -8,7 +8,9 @@ function bodyScrollingToggle() {
   (window.location.hash) ? console.log('hash exists') : console.log('-');
 })();
 
-// sections handlers
+// 
+// section handlers
+// 
 (() => {
   const sections = document.querySelectorAll(".section");
   const hash = window.location.hash;
@@ -43,7 +45,9 @@ function bodyScrollingToggle() {
   // };
 })();
 
-/*----------------preloader effect----------------*/
+// 
+// preloader effect
+// 
 window.addEventListener('load', (event) => {
   document.querySelector(".preloader").classList.add("fade-out");
   document.querySelector(".wrapper").style.visibility = "visible";
@@ -52,25 +56,29 @@ window.addEventListener('load', (event) => {
   }
 });
 
-/*----------------navigation bar effect----------------*/
-(() => {
-  // get nav-bar
-  const navBar = document.querySelector(".nav-bar");
+// 
+// navbar effect
+// 
+// (() => {
+//   // get nav-bar
+//   const navBar = document.querySelector(".nav-bar");
 
-  // When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar
-  var prevScrollpos = window.pageYOffset;
-  window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-      navBar.style.top = "0";
-    } else {
-      navBar.style.top = "-50px";
-    }
-    prevScrollpos = currentScrollPos;
-  }
-})();
+//   // When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar
+//   var prevScrollpos = window.pageYOffset;
+//   window.onscroll = function() {
+//     var currentScrollPos = window.pageYOffset;
+//     if (prevScrollpos > currentScrollPos) {
+//       navBar.style.top = "0";
+//     } else {
+//       navBar.style.top = "-50px";
+//     }
+//     prevScrollpos = currentScrollPos;
+//   }
+// })();
 
-/*----------------section tabs----------------*/
+// 
+// section tabs
+// 
 (() => {
   const hamburgerBtn = document.querySelector(".hamburger-btn"),
   navBarResponsive = document.querySelector(".nav-bar-responsive"),
@@ -136,7 +144,9 @@ window.addEventListener('load', (event) => {
   }
 })();
 
-/*----------------contactus form----------------*/
+// 
+// contactus form
+// 
 // (() => {
 //   $(document).ready(function() {
 //     $("form#contactusForm").on('submit', function(e) {
@@ -160,7 +170,9 @@ window.addEventListener('load', (event) => {
 //   });
 // })();
 
-/*----------------news popup----------------*/
+// 
+// news popup
+// 
 (() => {
   const popup = document.querySelector(".news-popup"),
   closeBtn = popup.querySelector(".close-pp");
@@ -202,7 +214,9 @@ window.addEventListener('load', (event) => {
   }
 })();
 
-/*----------------events carousel----------------*/
+// 
+// events carousel
+// 
 (() => {
 
   // get carousel section
@@ -282,7 +296,9 @@ window.addEventListener('load', (event) => {
 
 })();
 
-/*----------------our story tabs----------------*/
+// 
+// our story tabs
+// 
 (() => {
 
   const ourstorySection = document.querySelector(".ourstory-section"),
@@ -307,7 +323,9 @@ window.addEventListener('load', (event) => {
 
 })();
 
-/*----------------our story popup----------------*/
+// 
+// our story popup
+// 
 (() => {
 
   const popup = document.querySelector(".ourstory-popup"),
@@ -349,7 +367,9 @@ window.addEventListener('load', (event) => {
 
 })();
 
-/*----------------your story popup----------------*/
+// 
+// your story popup
+// 
 (() => {
 
   const popup = document.querySelector(".yourstory-popup"),
@@ -391,7 +411,9 @@ window.addEventListener('load', (event) => {
 
 })();
 
+// 
 // EXAMPLE OF SHOW ELEMENT WHEN SCROLLING DOWN
+// 
 // (() => {
 //   const item = document.querySelector(".news-banner-bg");
 

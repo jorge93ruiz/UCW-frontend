@@ -1051,7 +1051,7 @@ events section
 }
 .events-section .events-content-intro {
   text-align: center;
-  padding: 20px;
+  padding: 20px 20px 0;
 }
 .events-section .events-content-intro .events-content-title {
   border-bottom: var(--border-soft);
@@ -1300,7 +1300,8 @@ your story section
   height: 70vh;
 }
 .yourstory-section .yourstory-content-intro {
-  padding: 20px 40px;
+  text-align: center;
+  padding: 20px 20px 0;
 }
 .yourstory-section .yourstory-content .row {
   justify-content: center;

@@ -1531,7 +1531,7 @@ popups
   width: 100%;
   max-width: 1000px;
   max-height: 95vh;
-  /* padding: 20px; */
+  padding: 20px 0;
   border-radius: 3px;
   margin: auto;
   overflow: auto;

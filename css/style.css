@@ -394,7 +394,8 @@ admin panel
 nav bar
 --------------------------------*/
 .nav-bar {
-  position: fixed;
+  /* position: fixed; */
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 2;
@@ -613,7 +614,6 @@ header titles for all sections
   display: inline-block;
   /* font-family: 'Lobster', cursive; */
   font-size: var(--text-header);
-  font-weight: 600;
   text-transform: capitalize;
   color: var(--text-light);
   text-shadow: 2px 2px black;
@@ -626,15 +626,25 @@ header titles for all sections
 home section
 --------------------------------*/
 .home-section .home-header {
-  background-image: url('../img/home/header3.jpg');
+  /* background-image: url('../img/home/header3.jpg');
   background-size: cover;
   background-position: top;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   width: 100%;
 }
-.home-section .home-header .container {
+/* .home-section .home-header .container {
   position: relative;
   height: 70vh;
+} */
+
+.home-section .home-header .home-title {
+  text-align: center;
+  padding-top: 20px;
+  animation: slideLeft 1s ease;
+}
+.home-section .home-header .home-title .title {
+  font-size: 40px;
+  font-weight: 600;
 }
 
 /*--------------------------------about us--------------------------------*/

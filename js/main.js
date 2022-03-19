@@ -87,6 +87,14 @@ window.addEventListener('load', (event) => {
   hamburgerBtn.addEventListener("click", showNavMenu);
   closeNavBar.addEventListener("click", hideNavMenu);
 
+  // activate tab when reloading page
+  if (window.location.hash) {
+    navBarResponsive.querySelector(".tab.active").classList.add("outer-shadow", "hover-in-shadow");
+    navBarResponsive.querySelector(".tab.active").classList.remove("inner-shadow", "active");
+    navBarResponsive.querySelector('a[href="'+location.hash+'"]').classList.add("active", "inner-shadow");
+    navBarResponsive.querySelector('a[href="'+location.hash+'"]').classList.remove("hover-in-shadow", "outer-shadow");
+  }
+
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("tab")) {
       if (event.target.hash !== "") {
@@ -174,11 +182,12 @@ window.addEventListener('load', (event) => {
 // show news items
 // 
 (() => {
-  const newsItems = document.querySelectorAll(".news-item");
-  const showMoreBtn = document.querySelector(".show-more-btn");
+  const newsItemsContainer = document.querySelector(".news-items");
+  const newsItems = newsItemsContainer.querySelectorAll(".news-item");
+  const showMoreBtn = newsItemsContainer.querySelector(".show-more-btn");
   let visibleItems = 2; // modify to limit visible items when after load
 
-  console.log(newsItems.length)
+  console.log(newsItemsContainer)
 
   // hide news items
   showItems(newsItems, visibleItems);
@@ -187,7 +196,7 @@ window.addEventListener('load', (event) => {
     visibleItems = visibleItems + 2;
     showItems(newsItems, visibleItems);
 
-    if (newsItems.length >= visibleItems) 
+    if (visibleItems >= newsItems.length) 
       showMoreBtn.style.display = "none";
   });
 
@@ -359,7 +368,6 @@ window.addEventListener('load', (event) => {
   const popup = document.querySelector(".ourstory-popup"),
   closeBtn = popup.querySelector(".close-pp");
 
-  // $('body').on('click', '.founder-items', (event) => {
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("pp-btn")) {
       if (event.target.closest(".founder-item-inner")) {
@@ -393,6 +401,35 @@ window.addEventListener('load', (event) => {
     popup.querySelector(".pp-content").innerHTML = story;
   }
 
+})();
+
+// 
+// show your story items
+// 
+(() => {
+  const storyItemsContainer = document.querySelector(".story-items");
+  const storyItems = storyItemsContainer.querySelectorAll(".story-item");
+  const showMoreBtn = storyItemsContainer.querySelector(".show-more-btn");
+  let visibleItems = 3; // modify to limit visible items when after load
+
+  console.log(storyItemsContainer)
+
+  // hide news items
+  showItems(storyItems, visibleItems);
+
+  showMoreBtn.addEventListener('click', () => {
+    visibleItems = visibleItems + 3;
+    showItems(storyItems, visibleItems);
+
+    if (visibleItems >= storyItems.length) 
+      showMoreBtn.style.display = "none";
+  });
+
+  function showItems(items, visible) {
+    for (let i = 0; i < visible; i++) {
+      if (items[i]) items[i].classList.add("show");
+    }
+  }
 })();
 
 // 

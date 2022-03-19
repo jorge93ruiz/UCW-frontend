@@ -138,7 +138,6 @@ predefined classes
 .title {
   font-size: var(--text-title);
   font-weight: 500;
-  text-transform: capitalize;
   margin-bottom: 10px;
 }
 .space-around {
@@ -146,6 +145,9 @@ predefined classes
 }
 .justify-content-center {
   justify-content: center;
+}
+.text-center {
+  text-align: center;
 }
 .hover-border {
   transition: border 0.3s ease-in-out;
@@ -878,9 +880,9 @@ home section
 news section
 ------------------------*/
 .news-section .news-header {
-  background-image: url('../img/news/header.jpg');
+  background-image: url('../img/news/header_new.png');
   background-size: cover;
-  background-position: top;
+  background-position: center;
   width: 100%;
 }
 .news-section .news-header .container {
@@ -893,7 +895,12 @@ news section
   margin: auto;
 }
 .news-section .news-content .news-item {
+  display: none;
   padding: 20px;
+}
+.news-section .news-content .news-item.show {
+  display: initial;
+  transition: all 0.3s ease;
 }
 .news-section .news-content .news-item .news-item-inner {
   position: relative;
@@ -1010,7 +1017,7 @@ events section
 .events-section .events-header {
   background-image: url('../img/events/header.jpg');
   background-size: cover;
-  background-position: top;
+  background-position: center;
   width: 100%;
 }
 .events-section .events-header .container {
@@ -1149,7 +1156,7 @@ our story section
 .ourstory-section .ourstory-header {
   background-image: url('../img/ourstory/header.jpg');
   background-size: cover;
-  background-position: top;
+  background-position: center;
   width: 100%;
 }
 .ourstory-section .ourstory-header .container {
@@ -1260,7 +1267,7 @@ your story section
 .yourstory-section .yourstory-header {
   background-image: url('../img/yourstory/header.jpg');
   background-size: cover;
-  background-position: top;
+  background-position: center;
   width: 100%;
 }
 .yourstory-section .yourstory-header .container {

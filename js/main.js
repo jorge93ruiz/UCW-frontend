@@ -171,6 +171,34 @@ window.addEventListener('load', (event) => {
 // })();
 
 // 
+// show news items
+// 
+(() => {
+  const newsItems = document.querySelectorAll(".news-item");
+  const showMoreBtn = document.querySelector(".show-more-btn");
+  let visibleItems = 2; // modify to limit visible items when after load
+
+  console.log(newsItems.length)
+
+  // hide news items
+  showItems(newsItems, visibleItems);
+
+  showMoreBtn.addEventListener('click', () => {
+    visibleItems = visibleItems + 2;
+    showItems(newsItems, visibleItems);
+
+    if (newsItems.length >= visibleItems) 
+      showMoreBtn.style.display = "none";
+  });
+
+  function showItems(items, visible) {
+    for (let i = 0; i < visible; i++) {
+      if (items[i]) items[i].classList.add("show");
+    }
+  }
+})();
+
+// 
 // news popup
 // 
 (() => {

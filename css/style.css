@@ -859,7 +859,7 @@ home section
   background-color: var(--bg-black-50);
   box-shadow: var(--box-shadow);
   border-radius: 3px;
-  padding: 40px 20px;
+  padding: 20px;
   text-align: center;
 }
 .home-section .forms .contactus-form {
@@ -896,7 +896,10 @@ home section
 
 /*--------------------------------mailchimp newsletter--------------------------------*/
 .newsletter-form .input-group {
-  margin: 0 0 5px;
+  margin: 0;
+}
+.newsletter-form .mc-field-group {
+  margin: 0 0 15px;
 }
 .mce_inline_error {
   background-color: transparent !important;

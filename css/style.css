@@ -89,6 +89,9 @@ a {
 a:hover {
   opacity: 1;
 }
+button {
+  color: var(--text-dark)
+}
 ul {
   list-style: none;
   margin: 0;
@@ -530,8 +533,8 @@ nav bar
   background-color: var(--text-grey);
 }
 @media (max-width: 796px) {
-  .nav-bar .tab {
-  }
+  /* .nav-bar .tab {
+  } */
   .nav-bar {
     display: none;
   }
@@ -701,6 +704,10 @@ home section
 }
 .home-section .aboutus .box .logo {
   padding: 20px;
+  text-align: center;
+}
+.home-section .aboutus .box .logo img {
+  max-height: 200px;
 }
 
 /*--------------------------------news banner--------------------------------*/
@@ -761,6 +768,10 @@ home section
 .home-section .news-banner .news-banner-inner .news-banner-items .item img {
   margin-top: 10px;
   max-height: 250px;
+  cursor: pointer;
+}
+.home-section .news-banner .news-banner-inner .news-banner-items .item a {
+  opacity: 1;
 }
 .home-section .news-banner .newsletter-banner {
   display: flex;
@@ -1003,6 +1014,10 @@ news section
   border-bottom: var(--border-soft);
   font-size: var(--text-title);
   font-weight: 400;
+}
+.news-section .news-content .news-item:nth-child(1) .news-item-title {
+  border-bottom: none;
+
 }
 .news-section .news-content .news-item .news-item-content {
   white-space: pre-line; /* wrap and keep preformatted text */

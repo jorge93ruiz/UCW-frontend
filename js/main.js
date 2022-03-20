@@ -3,11 +3,6 @@ function bodyScrollingToggle() {
   document.body.classList.toggle("hidden-scrolling");
 }
 
-// check hash on URL and go to page
-(() => {
-  (window.location.hash) ? console.log('hash exists') : console.log('-');
-})();
-
 // 
 // section handlers
 // 
@@ -187,8 +182,6 @@ window.addEventListener('load', (event) => {
   const showMoreBtn = newsItemsContainer.querySelector(".show-more-btn");
   let visibleItems = 2; // modify to limit visible items when after load
 
-  console.log(newsItemsContainer)
-
   // hide news items
   showItems(newsItems, visibleItems);
 
@@ -213,8 +206,8 @@ window.addEventListener('load', (event) => {
 (() => {
   const popup = document.querySelector(".news-popup"),
   closeBtn = popup.querySelector(".close-pp");
+  const newsItemsContainer = document.querySelector(".news-items");
 
-  // $('body').on('click', '.news-items', (event) => {  
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("pp-btn")) {
       if (event.target.closest(".news-item-inner")) {
@@ -222,6 +215,21 @@ window.addEventListener('load', (event) => {
         const newsItem = event.target.closest(".news-item-inner").parentElement;
         popupDetails(newsItem);
         popUpTogle();
+      }
+    }
+  });
+
+  // news popup from news banner in home page
+  document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("banner-item-img")) {
+      if (event.target.closest(".item")){
+        title = event.target.closest(".item").querySelector("label").innerHTML;
+        newsItemsContainer.querySelectorAll(".news-item-inner").forEach((item) => {
+          if (item.querySelector(".news-item-title").innerHTML == title) {
+            popupDetails(item.parentElement);
+            popUpTogle();
+          }
+        });
       }
     }
   });
@@ -411,8 +419,6 @@ window.addEventListener('load', (event) => {
   const storyItems = storyItemsContainer.querySelectorAll(".story-item");
   const showMoreBtn = storyItemsContainer.querySelector(".show-more-btn");
   let visibleItems = 3; // modify to limit visible items when after load
-
-  console.log(storyItemsContainer)
 
   // hide news items
   showItems(storyItems, visibleItems);

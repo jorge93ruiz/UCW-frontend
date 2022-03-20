@@ -233,17 +233,21 @@ predefined classes
   background-color: var(--bg-black-50);
   right: 20px;
   top: 20px;
-  height: 40px;
+  /* height: 40px;
   width: 40px;
-  border-radius: 50%;
-  font-size: 35px;
-  line-height: 35px;
+  border-radius: 50%; */
+  border-radius: 10px;
+  font-size: var(--text-large);
+  font-weight: 400;
+  padding: 5px 10px;
+  /* line-height: 35px; */
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .close-btn:after {
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  border-radius: 10px;
 }
 .section.hide {
   display: none;
@@ -1575,7 +1579,7 @@ popups
   max-height: 300px;
 }
 .pp .pp-title {
-  font-size: var(--text-large);
+  font-size: var(--text-xxlarge);
   font-weight: 400;
   text-align: center;
   padding: 10px;

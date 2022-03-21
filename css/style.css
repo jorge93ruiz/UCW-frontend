@@ -663,6 +663,7 @@ home section
   background-position: top;
   background-repeat: no-repeat; */
   width: 100%;
+  text-align: center;
 }
 /* .home-section .home-header .container {
   position: relative;

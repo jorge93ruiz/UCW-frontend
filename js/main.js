@@ -180,7 +180,9 @@ window.addEventListener('load', (event) => {
   const newsItemsContainer = document.querySelector(".news-items");
   const newsItems = newsItemsContainer.querySelectorAll(".news-item");
   const showMoreBtn = newsItemsContainer.querySelector(".show-more-btn");
-  let visibleItems = 2; // modify to limit visible items when after load
+  let visibleItems = 6; // modify to limit visible items when after load
+
+  if (visibleItems >= newsItems.length) showMoreBtn.style.display = "none";
 
   // hide news items
   showItems(newsItems, visibleItems);
@@ -189,8 +191,8 @@ window.addEventListener('load', (event) => {
     visibleItems = visibleItems + 2;
     showItems(newsItems, visibleItems);
 
-    if (visibleItems >= newsItems.length) 
-      showMoreBtn.style.display = "none";
+    // TODO: refactor if statement to be placed in one place only
+    if (visibleItems >= newsItems.length) showMoreBtn.style.display = "none";
   });
 
   function showItems(items, visible) {
@@ -418,7 +420,9 @@ window.addEventListener('load', (event) => {
   const storyItemsContainer = document.querySelector(".story-items");
   const storyItems = storyItemsContainer.querySelectorAll(".story-item");
   const showMoreBtn = storyItemsContainer.querySelector(".show-more-btn");
-  let visibleItems = 3; // modify to limit visible items when after load
+  let visibleItems = 6; // modify to limit visible items when after load
+
+  if (visibleItems >= storyItems.length) showMoreBtn.style.display = "none";
 
   // hide news items
   showItems(storyItems, visibleItems);
@@ -427,8 +431,8 @@ window.addEventListener('load', (event) => {
     visibleItems = visibleItems + 3;
     showItems(storyItems, visibleItems);
 
-    if (visibleItems >= storyItems.length) 
-      showMoreBtn.style.display = "none";
+    // TODO: refactor if statement to be placed in one place only
+    if (visibleItems >= storyItems.length) showMoreBtn.style.display = "none";
   });
 
   function showItems(items, visible) {

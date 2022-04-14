@@ -1019,13 +1019,11 @@ news section
 .news-section .news-content .news-item .news-item-title {
   display: block;
   width: 100%;
-  border-bottom: var(--border-soft);
   font-size: var(--text-title);
   font-weight: 400;
 }
-.news-section .news-content .news-item:nth-child(1) .news-item-title {
-  border-bottom: none;
-
+.border-bottom-soft {
+  border-bottom: var(--border-soft);
 }
 .news-section .news-content .news-item .news-item-content {
   white-space: pre-line; /* wrap and keep preformatted text */

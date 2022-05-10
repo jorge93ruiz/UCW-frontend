@@ -156,6 +156,7 @@ predefined classes
   font-size: var(--text-title);
   font-weight: 500;
   margin-bottom: 10px;
+  text-align: center;
 }
 .space-around {
   justify-content: space-around;

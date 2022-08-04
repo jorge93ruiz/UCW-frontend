@@ -133,7 +133,7 @@ tr:nth-child(even) {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-black-100);
+  background: var(--bg-black-150);
   border-radius: 10px;
 }
 /* Handle on hover */

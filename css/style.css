@@ -490,7 +490,7 @@ nav bar
   position: relative;
   transition: all 0.3s ease;
 }
-.hamburger-btn span:before, 
+.hamburger-btn span:before,
 .hamburger-btn span:after {
   content: '';
   position: absolute;
@@ -773,7 +773,7 @@ home section
 }
 .home-section .news-banner .news-banner-inner .news-banner-items .item img {
   margin-top: 10px;
-  max-height: 250px;
+  max-height: 200px;
   cursor: pointer;
 }
 .home-section .news-banner .news-banner-inner .news-banner-items .item a {
@@ -1668,7 +1668,7 @@ delete confirmation screen
   padding: 20px;
   text-align: center;
   border-radius: 3px;
-} 
+}
 .delete-confirmation-screen .confirmation-screen-inner p {
   padding: 10px 0;
 }
